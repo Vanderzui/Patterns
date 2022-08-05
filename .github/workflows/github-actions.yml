@@ -1,11 +1,9 @@
 name: github-actions
 on:
   push:
-    branches:
-      - 'dev'
+    branches: [dev]
   pull_request:
-    branches:
-      - 'dev', 'main'
+    branches: [dev]
   create:
 jobs:
   first-job:
@@ -18,7 +16,7 @@ jobs:
           MY_VAR_2: and i'm trying to figure out ci
           FIRST_NAME: Alice
         run: |
-          echo $MY_VAR $FIRST_NAME $MY_VAR_2.
+          echo $MY_VAR_1 $FIRST_NAME $MY_VAR_2.
   build:
     name: Gradle Build
     runs-on: macos-12
@@ -28,7 +26,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'coretto-17'
+          distribution: 'adopt'
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
